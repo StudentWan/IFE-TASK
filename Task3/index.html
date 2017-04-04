@@ -17,6 +17,7 @@
         }
 
         body {
+            min-width: 850px;
             margin: 0;
             background: gainsboro;
         }
@@ -49,13 +50,33 @@
             border-radius: 20%;
         }
 
-        .content {
+        .content-wrapper{
+            position: relative;
+        }
+
+        .article-wrapper {
+            margin-right: 550px;
+        }
+
+        .sidebar-wrapper {
+            top:0;
+            right: 0;
+            position: absolute;
+            margin-right:20px;
+            width: 500px;
+        }
+
+        .article-wrapper .content {
             background: white;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
             margin-top: 20px;
             margin-bottom: 20px;
+            margin-left: 20px;
+            padding: 20px;
+            box-shadow: 5px 5px 5px 5px grey;
+        }
+
+        .sidebar-wrapper .content {
+            background: white;
             padding: 20px;
             box-shadow: 5px 5px 5px 5px grey;
         }
@@ -71,6 +92,10 @@
 
         .article p {
             text-indent: 2em;
+        }
+
+        .article img {
+            max-width: 100%;
         }
 
         .article ul li {
@@ -101,10 +126,11 @@
         }
 
         .imglist {
+            float: left;
             width: 200px;
             height: 200px;
             border: 1px solid black;
-            margin: 10px 0;
+            margin: 10px;
             padding: 5px;
             text-align: center;
         }
@@ -118,7 +144,7 @@
             height: 150px;
         }
 
-        .sidebar form  table{
+        .sidebar form table {
             margin: 0 auto;
         }
 
@@ -168,194 +194,199 @@
         <li><a href="#">导航链接四</a></li>
     </ul>
 </header>
+<div class="content-wrapper">
+    <div class="article-wrapper">
+        <div class="content article">
+            <h1>文章一级标题</h1>
+            <h2>文章二级标题</h2>
+            <div class="author">
+                <span>文章作者</span> <span>文章发表时间</span>
+            </div>
+            <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<br>换行长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a
+                    href="http://ife.baidu.com">这是一个很长的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
+            </p>
+            <img src="IMG_4091.JPG"/>
+            <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<br>换行长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a
+                    href="http://ife.baidu.com"
+                    target="view_window">这是一个很长新窗口的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
+            </p>
+        </div>
 
-<div class="content article">
-    <h1>文章一级标题</h1>
-    <h2>文章二级标题</h2>
-    <div class="author">
-        <span>文章作者</span> <span>文章发表时间</span>
+        <div class="content article">
+            <h1>另一篇文章一级标题</h1>
+            <h2>文章二级标题</h2>
+            <div class="author">
+                <span>文章作者</span> <span>文章发表时间</span>
+            </div>
+            <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a
+                    href="http://ife.baidu.com">这是一个很长的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
+            </p>
+            <img src="IMG_4091.JPG"/>
+            <ul>
+                <li>列表项目一</li>
+                <li>列表项目二</li>
+                <li>列表项目三</li>
+            </ul>
+        </div>
+
+        <div class="content article group">
+            <h1>图片</h1>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+            <div class="imglist">
+                <p>好看的图片</p>
+                <img src="IMG_4091.JPG"/>
+            </div>
+        </div>
+
+        <div class="content article">
+            <h1>最后一篇文章一级标题</h1>
+            <h2>文章二级标题</h2>
+            <div class="author">
+                <span>文章作者</span> <span>文章发表时间</span>
+            </div>
+            <ol>
+                <li>排名1</li>
+                <li>排名2</li>
+                <li>排名3</li>
+            </ol>
+            <p>下面是一个表格，给表格加一个border="1"好让你看出是一个表格</p>
+            <table>
+                <tr class="tr1">
+                    <th>表头</th>
+                    <th>表头</th>
+                    <th>表头</th>
+                </tr>
+                <tr class="tr2">
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr class="tr3">
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr class="tr4">
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td><a href="#">操作</a></td>
+                </tr>
+                <tr class="tr5">
+                    <td>总计</td>
+                    <!--记住colspan-->
+                    <td colspan='2'>1000</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<br>换行长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a
-            href="http://ife.baidu.com">这是一个很长的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
-    </p>
-    <img src="IMG_4091.JPG"/>
-    <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<br>换行长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a href="http://ife.baidu.com"
-                                                                                        target="view_window">这是一个很长新窗口的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
-    </p>
+
+    <div class="sidebar-wrapper">
+        <div class="content sidebar">
+            <h2 style="border-left:6px solid #ccc;padding-left: 20px">这里以后是一个侧栏，这是侧栏的标题</h2>
+            <form>
+                <table>
+                    <tr>
+                        <td class="row1">
+                            <label>请输入邮箱地址</label>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="这是一个文本输入框"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1"></td>
+                        <td><P>邮箱地址请按要求格式输入</P></td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>请输入密码</label>
+                        </td>
+                        <td>
+                            <input type="password" placeholder="这是一个文本输入框"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>请重复输入密码</label>
+                        </td>
+                        <td>
+                            <input type="password" placeholder="这是一个文本输入框"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1"></td>
+                        <td>
+                            <p>密码请为6-16位英文数字</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>性别</label>
+                        </td>
+                        <td>
+                            <input type="radio" value="1" name="gender"/>
+                            <label>男</label>
+                            <input type="radio" value="2" name="gender"/>
+                            <label>女</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>城市</label>
+                        </td>
+                        <td>
+                            <select>
+                                <option value="北京">北京</option>
+                                <option value="上海">上海</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>爱好</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="1" name="hobbit"/>
+                            <label>运动</label>
+                            <input type="checkbox" value="2" name="hobbit"/>
+                            <label>艺术</label>
+                            <input type="checkbox" value="3" name="hobbit"/>
+                            <label>科学</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row1">
+                            <label>个人描述</label>
+                        </td>
+                        <td>
+                            <textarea cols="50" rows="10" placeholder="这是一个多行输入框，输入您的个人描述"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input id="submit" type="submit" value="确认提交" name="submitBtn"/>
+            </form>
+        </div>
+    </div>
 </div>
-
-<div class="content article">
-    <h1>另一篇文章一级标题</h1>
-    <h2>文章二级标题</h2>
-    <div class="author">
-        <span>文章作者</span> <span>文章发表时间</span>
-    </div>
-    <p>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长<a
-            href="http://ife.baidu.com">这是一个很长的链接到百度</a>长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长
-    </p>
-    <img src="IMG_4091.JPG"/>
-    <ul>
-        <li>列表项目一</li>
-        <li>列表项目二</li>
-        <li>列表项目三</li>
-    </ul>
-</div>
-
-<div class="content article">
-    <h1>图片</h1>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-    <div class="imglist">
-        <p>好看的图片</p>
-        <img src="IMG_4091.JPG"/>
-    </div>
-</div>
-
-<div class="content article">
-    <h1>最后一篇文章一级标题</h1>
-    <h2>文章二级标题</h2>
-    <div class="author">
-        <span>文章作者</span> <span>文章发表时间</span>
-    </div>
-    <ol>
-        <li>排名1</li>
-        <li>排名2</li>
-        <li>排名3</li>
-    </ol>
-    <p>下面是一个表格，给表格加一个border="1"好让你看出是一个表格</p>
-    <table>
-        <tr class="tr1">
-            <th>表头</th>
-            <th>表头</th>
-            <th>表头</th>
-        </tr>
-        <tr class="tr2">
-            <td>表内容单元格</td>
-            <td>表内容单元格</td>
-            <td><a href="#">操作</a></td>
-        </tr>
-        <tr class="tr3">
-            <td>表内容单元格</td>
-            <td>表内容单元格</td>
-            <td><a href="#">操作</a></td>
-        </tr>
-        <tr class="tr4">
-            <td>表内容单元格</td>
-            <td>表内容单元格</td>
-            <td><a href="#">操作</a></td>
-        </tr>
-        <tr class="tr5">
-            <td>总计</td>
-            <!--记住colspan-->
-            <td colspan='2'>1000</td>
-        </tr>
-    </table>
-</div>
-
-<div class="content sidebar">
-    <h2 style="border-left:6px solid #ccc;padding-left: 20px">这里以后是一个侧栏，这是侧栏的标题</h2>
-    <form>
-        <table>
-            <tr>
-                <td class="row1">
-                    <label>请输入邮箱地址</label>
-                </td>
-                <td>
-                    <input type="text" placeholder="这是一个文本输入框"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1"></td>
-                <td><P>邮箱地址请按要求格式输入</P></td>
-            </tr>
-            <tr>
-                <td class="row1">
-                    <label>请输入密码</label>
-                </td>
-                <td>
-                    <input type="password" placeholder="这是一个文本输入框"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1">
-                    <label>请重复输入密码</label>
-                </td>
-                <td>
-                    <input type="password" placeholder="这是一个文本输入框"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1"></td>
-                <td>
-            <p>密码请为6-16位英文数字</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1">
-            <label>性别</label>
-                </td>
-                <td>
-            <input type="radio" value="1" name="gender"/>
-            <label>男</label>
-            <input type="radio" value="2" name="gender"/>
-            <label>女</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1">
-            <label>城市</label>
-                </td>
-                <td>
-            <select>
-                <option value="北京">北京</option>
-                <option value="上海">上海</option>
-            </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1">
-            <label>爱好</label>
-                </td>
-                <td>
-            <input type="checkbox" value="1" name="hobbit"/>
-            <label>运动</label>
-            <input type="checkbox" value="2" name="hobbit"/>
-            <label>艺术</label>
-            <input type="checkbox" value="3" name="hobbit"/>
-            <label>科学</label>
-                </td>
-            </tr>
-            <tr>
-                <td class="row1">
-            <label>个人描述</label>
-                </td>
-                <td>
-            <textarea cols="150" rows="10" placeholder="这是一个多行输入框，输入您的个人描述"></textarea>
-                </td>
-            </tr>
-        </table>
-        <input id="submit" type="submit" value="确认提交" name="submitBtn"/>
-    </form>
-</div>
-
 <footer class="group">
     <p>版权所有©️</p>
 </footer>
