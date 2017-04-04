@@ -84,8 +84,8 @@
         let pattern = /[^\x00-\xff]/;
         let count = 0;
         let add;
-        for(var str of strs) {
-            add = pattern.test(str)?2:1;
+        for (var str of strs) {
+            add = pattern.test(str) ? 2 : 1;
             count += add;
         }
         switch (true) {
@@ -107,10 +107,10 @@
     function setStyle(text, veri) {
         let input = document.getElementById("name");
         let hint = document.getElementById("hint");
-        if(veri == true) {
-        input.style.border = "1px solid green";
-        input.style.outlineColor = "green"
-        hint.style.color = "green";
+        if (veri == true) {
+            input.style.border = "1px solid green";
+            input.style.outlineColor = "green";
+            hint.style.color = "green";
         } else {
             input.style.border = "1px solid red";
             input.style.outlineColor = "red";
