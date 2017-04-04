@@ -1,0 +1,124 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+        }
+
+        form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        form .column_1 {
+            width: 50px;
+            text-align: left;
+        }
+
+        form .column_2 {
+            text-align: left;
+        }
+
+        form .column_3 {
+            width: 80px;
+            text-align: center;
+        }
+
+        form p {
+            font-size: small;
+            color: gray;
+        }
+
+        form #name {
+            width: 200px;
+            height: 40px;
+            outline-color: gainsboro;
+            border: 1px solid black;
+        }
+
+        form #verify {
+            height: 40px;
+            font-size: large;
+            border-radius: 5px;
+            background: dodgerblue;
+            color: white;
+            border: none;
+            /*去除点按样式用outline:none;*/
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<form onsubmit="return validate(this)">
+    <table>
+        <tr>
+            <td class="column_1">
+                <label for="name">名称</label>
+            </td>
+            <td class="column_2">
+                <input type="text" id="name"/>
+            </td>
+            <td class="column_3">
+                <input type="submit" id="verify" value="验证"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="cloumn_1"></td>
+            <td class="column_2">
+                <p id="hint">必填，长度为4~16个字符</input>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function validate(field) {
+        let strs = field.name.value;
+        let pattern = /[^\x00-\xff]/;
+        let count = 0;
+        let add;
+        for(var str of strs) {
+            add = pattern.test(str)?2:1;
+            count += add;
+        }
+        switch (true) {
+            case count == 0:
+                setStyle("名字长度不能为0！", false);
+                break;
+            case count != 0 && count < 4:
+                setStyle("名字长度不能小于4", false);
+                break;
+            case count > 16:
+                setStyle("名字长度不能大于16", false);
+                break;
+            default:
+                setStyle("输入正确！", true);
+        }
+        return false;
+    }
+
+    function setStyle(text, veri) {
+        let input = document.getElementById("name");
+        let hint = document.getElementById("hint");
+        if(veri == true) {
+        input.style.border = "1px solid green";
+        input.style.outlineColor = "green"
+        hint.style.color = "green";
+        } else {
+            input.style.border = "1px solid red";
+            input.style.outlineColor = "red";
+            hint.style.color = "red";
+        }
+        hint.innerHTML = text;
+    }
+</script>
+</body>
+
+</html>
