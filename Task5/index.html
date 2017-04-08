@@ -15,7 +15,7 @@
 
 <script type="text/javascript">
 
-    var aqiData = [
+    let aqiData = [
         ["北京", 90],
         ["上海", 50],
         ["福州", 10],
@@ -26,15 +26,32 @@
 
     (function () {
         const aqiList = document.getElementById('aqi-list');
-        let j = 1;
-        for(var i = 0; i < aqiData.length; i++) {
-            if(aqiData[i][1] <= 60) {
-                let node = document.createElement('li');
-                node.innerHTML = '第' + j + '名 ' + aqiData[i][0] + ', ' + aqiData[i][1];
-                aqiList.appendChild(node);
-                j++;
+        let poluteList = [];
+        let count = 1;
+        for (var i of aqiData) {
+            if (i[1] > 60) {
+                poluteList.push(i);
             }
         }
+
+        for (var i = 0; i < poluteList.length; i++) {
+            for (var j = 0; j < poluteList.length - i - 1; j++) {
+                if (poluteList[j][1] < poluteList[j + 1][1]) {
+                    let temp = poluteList[j];
+                    poluteList[j] = poluteList[j + 1];
+                    poluteList[j + 1] = temp;
+                }
+            }
+        }
+
+        for (var i of poluteList) {
+            let node = document.createElement('li');
+            node.innerHTML = '第' + count + '名  ' + i[0] + ',  ' + i[1];
+            aqiList.appendChild(node);
+            count++;
+        }
+
+
         /*
          在注释下方编写代码
          遍历读取aqiData中各个城市的数据
