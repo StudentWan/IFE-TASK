@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .group:before,
+        .group:after {
+            content: "";
+            display: table;
+        }
+        .group:after {
+            clear: both;
+        }
+        .group {
+            *zoom: 1;
+        }
+
+        body {
+            width: 980px;
+            height: 1386px;
+            margin: 0 auto;
+        }
+
+        header {
+            width: 892px;
+            margin: 0 auto;
+        }
+
+        header #head {
+            position: relative;
+            width: 110px;
+            height: 61px;
+            background: #d45d5c;
+        }
+
+        header #head #title {
+            font: 12px "黑体";
+            color: #ffffff;
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+        }
+
+        header #time {
+            float: right;
+            font: 12px "黑体";
+            color: #d45d5c;
+            margin-top: 42px;
+        }
+
+
+        header .head_line {
+            height: 2px;
+        }
+
+        footer {
+            width: 892px;
+            height: 62px;
+            margin: 0 auto;
+        }
+
+        footer #foot {
+            float: right;
+        }
+
+        footer #foot span {
+            font: 12px "黑体";
+            color: #d45d5c
+        }
+
+        .split_line {
+            margin: 0;
+            height: 1px;
+            border: none;
+            background: #938e8c;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span id="time">2017.03</span>
+    <div id="head">
+        <span id="title">Dark Souls</span>
+    </div>
+    <div class="split_line head_line"></div>
+</header>
+<footer>
+    <div class="split_line foot_line"></div>
+    <div id="foot">
+    <span>Dark Souls</span>
+</div>
+</footer>
+</body>
+</html>
