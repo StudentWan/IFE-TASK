@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,59 +6,95 @@
 </head>
 <body>
 
-<h3>污染城市列表</h3>
-<ul id="aqi-list">
-    <!--
-        <li>第一名：福州（样例），10</li>
-          <li>第二名：福州（样例），10</li> -->
+<ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
 </ul>
+
+<ul id="resort">
+    <!--
+    <li>第一名：北京空气质量：<b>90</b></li>
+    <li>第二名：北京空气质量：<b>90</b></li>
+    <li>第三名：北京空气质量：<b>90</b></li>
+     -->
+
+</ul>
+
+<button id="sort-btn">排序</button>
 
 <script type="text/javascript">
 
-    let aqiData = [
-        ["北京", 90],
-        ["上海", 50],
-        ["福州", 10],
-        ["广州", 50],
-        ["成都", 90],
-        ["西安", 100]
-    ];
-
-    (function () {
-        const aqiList = document.getElementById('aqi-list');
-        let poluteList = [];
-        let count = 1;
-        for (var i of aqiData) {
-            if (i[1] > 60) {
-                poluteList.push(i);
-            }
+    /**
+     * getData方法
+     * 读取id为source的列表，获取其中城市名字及城市对应的空气质量
+     * 返回一个数组，格式见函数中示例
+     */
+    function getData() {
+        const resource = document.getElementById('source');
+        const list = resource.childNodes;
+        let data = [];
+        let text, city, score;
+        const patternCity = /[\u4e00-\u9fa5]{2}/;
+        const patternScore = /[\d]+/;
+        for (let i = 1; i < list.length; i += 2) {
+            text = list[i].innerText;
+            city = patternCity.exec(text)[0];
+            score = patternScore.exec(text)[0];
+            data.push([city, score]);
         }
+        return data;
+    }
 
-        for (var i = 0; i < poluteList.length; i++) {
-            for (var j = 0; j < poluteList.length - i - 1; j++) {
-                if (poluteList[j][1] < poluteList[j + 1][1]) {
-                    let temp = poluteList[j];
-                    poluteList[j] = poluteList[j + 1];
-                    poluteList[j + 1] = temp;
-                }
+    function sortAqiData(data) {
+        data.sort((prev, next) => {
+            if (prev[1] < next[1]) {
+                return -1;
+            } else if (prev[1] > next[1]) {
+                return 1;
+            } else {
+                return 0;
             }
-        }
+        });
+        return data;
+    }
 
-        for (var i of poluteList) {
+    function render(data) {
+        let resort = document.getElementById('resort');
+        data.forEach((item, i) => {
             let node = document.createElement('li');
-            node.innerHTML = '第' + count + '名  ' + i[0] + ',  ' + i[1];
-            aqiList.appendChild(node);
-            count++;
+            node.innerHTML = '第' + switchChinese(i + 1) + '名：' + item[0] + '，' + item[1];
+            resort.appendChild(node);
+        });
+    }
+
+    function switchChinese(number) {
+        let chr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+        let result = '';
+        for (let i of number.toString()) {
+            result = result + chr[i];
         }
+        return result;
+    }
 
+    function btnHandle() {
+        let aqiData = getData();
+        aqiData = sortAqiData(aqiData);
+        render(aqiData);
+    }
 
-        /*
-         在注释下方编写代码
-         遍历读取aqiData中各个城市的数据
-         将空气质量指数大于60的城市显示到aqi-list的列表中
-         */
+    function init() {
+        let btn = document.getElementById('sort-btn');
+        btn.onclick = () => {
+            btnHandle();
+        }
+    }
 
-    })();
+    init();
 
 </script>
 </body>
