@@ -1,0 +1,253 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .column1 {
+            text-align: right;
+        }
+
+        .column2 {
+            text-align: left;
+        }
+
+        .button {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form>
+        <table>
+            <tr>
+                <td class="column1"><label for="name">名称</label></td>
+                <td class="column2"><input type="text" id="name" onfocus="hint(this.id);" onblur="prompt(this.id)"></td>
+            </tr>
+            <tr>
+                <td class="column1"></td>
+                <td class="column2" id="name_hint"></td>
+            </tr>
+            <tr>
+                <td class="column1"><label for="password">密码</label></td>
+                <td class="column2"><input type="password" id="password" onfocus="hint(this.id);" onblur="prompt(this.id)"></td>
+            </tr>
+            <tr>
+                <td class="column1"></td>
+                <td class="column2" id="password_hint"></td>
+            </tr>
+            <tr>
+                <td class="column1"><label for="passconfirm">密码确认</label></td>
+                <td class="column2"><input type="password" id="passconfirm" onfocus="hint(this.id);" onblur="prompt(this.id)"></td>
+            </tr>
+            <tr>
+                <td class="column1"></td>
+                <td class="column2" id="passconfirm_hint"></td>
+            </tr>
+            <tr>
+                <td class="column1"><label for="email">邮箱</label></td>
+                <td class="column2"><input type="text" id="email" onfocus="hint(this.id);" onblur="prompt(this.id)"></td>
+            </tr>
+            <tr>
+                <td class="column1"></td>
+                <td class="column2" id="email_hint"></td>
+            </tr>
+            <tr>
+                <td class="column1"><label for="cellphone">手机</label></td>
+                <td class="column2"><input type="text" id="cellphone" onfocus="hint(this.id);" onblur="prompt(this.id)"></td>
+            </tr>
+            <tr>
+                <td class="column1"></td>
+                <td class="column2" id="cellphone_hint"></td>
+            </tr>
+            <tr>
+                <td class="button" colspan="2"><input type="submit" id="confirm" value="确认"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script>
+    let btn = document.getElementById('confirm');
+    btn.onclick = function () {
+        let name = document.getElementById('name');
+        let password = document.getElementById('password');
+        let passconfirm = document.getElementById('passconfirm');
+        let email = document.getElementById('email');
+        let cellphone = document.getElementById('cellphone');
+
+        if(verifyContent(name) && verifyContent(password) && verifyPassconfirm(passconfirm) && verifyEmail(email) && verifyCellphone(cellphone)) {
+            alert('输入正确。');
+            return true;
+        } else {
+            alert('输入有误！');
+            return false;
+        }
+
+    };
+    
+    function hint(id) {
+        id = id + "_hint";
+        let item = document.getElementById(id);
+        let context;
+        item.style.color = 'grey';
+        item.style.fontSize = 'small';
+        switch (id) {
+            case 'name_hint':
+                context = "必填，长度为4-16字符。";
+                break;
+            case 'password_hint':
+                context = "必填，长度为4-16字符。";
+                break;
+            case 'passconfirm_hint':
+                context = "再次输入相同的密码。";
+                break;
+            case 'email_hint':
+                context = "必填，必须符合邮件规范。";
+                break;
+            case 'cellphone_hint':
+                context = "必填，必须符合手机号码规范。";
+            default:
+                break;
+        }
+        item.innerHTML = context;
+    }
+
+    function prompt(id) {
+        let veriContent = document.getElementById(id);
+        switch (id) {
+            case 'name':
+                verifyContent(veriContent);
+                break;
+            case 'password':
+                verifyContent(veriContent);
+                break;
+            case 'passconfirm':
+                verifyPassconfirm(veriContent);
+                break;
+            case 'email':
+                verifyEmail(veriContent);
+                break;
+            case 'cellphone':
+                verifyCellphone(veriContent);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function verifyContent(field) {
+        let idHint = field.id + "_hint";
+        let item = document.getElementById(idHint);
+
+        let content = field.value;
+        let pattern = /[^\x00-\xff]/;
+        let count = 0;
+        let add;
+        for (let str of content) {
+            add = pattern.test(str) ? 2 : 1;
+            count += add;
+        }
+
+        switch (true) {
+            case count == 0:
+                setStyle(field,item,"不能为空！", false);
+                return false;
+            case count != 0 && count < 4:
+                setStyle(field,item,"长度不能小于4！", false);
+                return false;
+            case count > 16:
+                setStyle(field,item,"长度不能大于16！", false);
+                return false;
+            default:
+                setStyle(field,item,"输入正确。", true);
+                return true;
+        }
+    }
+
+    function verifyPassconfirm(field){
+        let idHint = field.id + "_hint";
+        let item = document.getElementById(idHint);
+
+        let content = field.value;
+        let pattern = /[^\x00-\xff]/;
+        let count = 0;
+        let add;
+        for (let str of content) {
+            add = pattern.test(str) ? 2 : 1;
+            count += add;
+        }
+
+        switch (true) {
+            case count == 0:
+                setStyle(field,item,"不能为空！", false);
+                return false;
+            case count != 0 && count < 4:
+                setStyle(field,item,"长度不能小于4！", false);
+                return false;
+            case count > 16:
+                setStyle(field,item,"长度不能大于16！", false);
+                return false;
+            default:
+                let password = document.getElementById('password');
+                if(field.value !== password.value){
+                    setStyle(field,item,"两次输入不一致！", false);
+                    return false;
+                } else {
+                    setStyle(field,item,"输入正确。", true);
+                    return true;
+                }
+        }
+    }
+
+    function verifyEmail(field) {
+        let idHint = field.id + "_hint";
+        let item = document.getElementById(idHint);
+
+        let content = field.value;
+        let pattern = /^\w{2,10}@\w{1,5}\.[a-zA-Z]{3,5}$/;
+        let result = pattern.test(content);
+        if(result === true) {
+            setStyle(field,item,"输入正确。", true);
+            return true;
+        } else {
+            setStyle(field,item,"邮件格式不正确。", false);
+            return false;
+        }
+    }
+
+    function verifyCellphone(field) {
+        let idHint = field.id + "_hint";
+        let item = document.getElementById(idHint);
+
+        let content = field.value;
+        let pattern = /^\d{11}$/;
+        let result = pattern.test(content);
+        if(result === true) {
+            setStyle(field,item,"输入正确。", true);
+            return true;
+        } else {
+            setStyle(field,item,"手机格式不正确。", false);
+            return false;
+        }
+    }
+
+    function setStyle(input, hint, text, veri) {
+        if (veri == true) {
+            input.style.border = "1px solid green";
+            hint.style.color = "green";
+        } else {
+            input.style.border = "1px solid red";
+            hint.style.color = "red";
+        }
+        hint.innerHTML = text;
+    }
+
+</script>
+</body>
+</html>
