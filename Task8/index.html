@@ -1,0 +1,510 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="./font/iconfont.css">
+    <script src="./font/iconfont.js"></script>
+    <style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        header {
+            width: 100vw;
+            height: 60px;
+            min-width: 1200px;
+        }
+
+        header .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            width: 20%;
+            height: 50px;
+        }
+
+        header .title span {
+            font: 20px "Lantinghei TC";
+            color: grey;
+        }
+
+        header .nav {
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            width: 50%;
+            height: 50px;
+        }
+
+        header .nav a {
+            text-decoration: none;
+            padding: 16px 20px;
+            font: 20px "Lantinghei TC";
+            color: grey;
+        }
+
+        header .nav a:hover {
+            color: #0086b3;
+            border-bottom: 8px solid #0086b3;
+        }
+
+        .content_wrapper {
+            width: 100vw;
+            min-width: 1200px;
+        }
+
+        .poster {
+            position: relative;
+        }
+
+        .poster .poster_wrapper {
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translate(-10%, -50%);
+        }
+
+        .poster .poster_content {
+            color: floralwhite;
+        }
+
+        .poster .poster_button button {
+            text-decoration: none;
+            width: 280px;
+            height: 60px;
+            background: #0086b3;
+            border: none;
+            outline: none;
+            font: 24px "Lantinghei TC";
+            color: floralwhite;
+            text-align: center;
+        }
+
+        .poster img {
+            max-width: 100%;
+        }
+
+        .concept .up_line {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .concept .up_line .item {
+            width: 25%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .concept .up_line .item p {
+            width: 100%;
+            text-align: center;
+            font: 15px "Lantinghei TC";
+            color: grey;
+            border-right: 2px solid grey;
+        }
+
+        .concept .down_line {
+            width: 100%;
+            height: 300px;
+            background: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .concept .down_line p {
+            font: 40px "Lantinghei TC";
+            color: grey;
+            margin: 0;
+        }
+
+        .category {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
+
+        .category, .category .main::before {
+            background-image: url("category_back.jpg");
+            background-size: cover;
+        }
+
+        .category .main {
+            position: relative;
+            height: 300px;
+            background: hsla(0, 0%, 100%, .3);
+            overflow: hidden;
+        }
+
+        .category .main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            filter: blur(10px);
+            margin: -30px;
+        }
+
+        .category .main .index {
+            position: absolute;
+            width: 100%;
+            top: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category .main .index p {
+            color: white;
+            margin: 10px auto;
+        }
+
+        .category .select {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            top: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category > .select > div {
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            background: url("arrow-down.png") no-repeat scroll 95% center white;
+            background-size: 15px 15px;
+            outline-color: #0086b3;
+            color: grey;
+            font: 12px "Lantinghei TC";
+        }
+
+        .category > .select > .search {
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            background: #0086b3;
+            color: white;
+            font: 16px "Lantinghei TC";
+            text-align: center;
+            line-height: 30px;
+            white-space: nowrap;
+        }
+
+        .category > .select > div > ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            width: 200px;
+            top: 30px;
+        }
+
+        .category > .select > div > ul > li {
+            height: 30px;
+            line-height: 30px;
+            white-space: nowrap;
+            background: white;
+            padding-left: 5px;
+        }
+
+        .category > .select > div > ul > li:hover {
+            background: url("check.png") no-repeat scroll 2% center #0086b3;
+            background-size: 15px 15px;
+            color: white;
+            padding-left: 50px;
+        }
+
+        .category > .select > .country-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .category > .select > .country-menu:before {
+            content: "中国";
+            height: 30px;
+            line-height: 30px;
+            white-space: nowrap;
+            padding-left: 5px;
+        }
+
+        .category > .select > .country-menu:focus {
+            pointer-events: none;
+        }
+
+        .category > .select > .country-menu:focus .country-menu-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .category > .select > .country-menu > .country-menu-content {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: visiblity .5s;
+        }
+
+        .category > .select > .province-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .category > .select > .province-menu:before {
+            content: "四川";
+            height: 30px;
+            line-height: 30px;
+            white-space: nowrap;
+            padding-left: 5px;
+        }
+
+        .category > .select > .province-menu:focus {
+            pointer-events: none;
+        }
+
+        .category > .select > .province-menu:focus .province-menu-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .category > .select > .province-menu > .province-menu-content {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: visiblity .5s;
+        }
+
+        .category > .select > .city-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .category > .select > .city-menu:before {
+            content: "成都";
+            height: 30px;
+            line-height: 30px;
+            white-space: nowrap;
+            padding-left: 5px;
+        }
+
+        .category > .select > .city-menu:focus {
+            pointer-events: none;
+        }
+
+        .category > .select > .city-menu:focus .city-menu-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .category > .select > .city-menu > .city-menu-content {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: visiblity .5s;
+        }
+
+        .recommend {
+            width: 100%;
+            height: 500px;
+            background: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recommend>div {
+            width: 300px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recommend>div>div {
+            width: 220px;
+            height:300px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recommend>div>div>img{
+            width: 200px;
+            height:280px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav">
+        <a href="#">首页</a>
+        <a href="#">最新活动</a>
+        <a href="#">项目介绍</a>
+        <a href="#">关于我们</a>
+        <a href="#">
+            <svg class="icon" aria-hidden="true" style="font-size: 20px;">
+                <use xlink:href="#icon-user-boy"></use>
+            </svg>
+            登录</a>
+    </div>
+    <div class="title">
+        <svg class="icon" aria-hidden="true" style="font-size: 50px;">
+            <use xlink:href="#icon-Chengdu_Metro_icon"></use>
+        </svg>
+        <span>轻轨出行</span>
+    </div>
+</header>
+
+<div class="content_wrapper">
+    <div class="poster">
+        <div class="poster_wrapper">
+            <div class="poster_content">
+                <p style="font: 50px 'Microsoft YaHei';margin: 20px auto;">Time of city travel.</p>
+                <p style="font: 20px 'Lantinghei TC'">新时代，年轻的人们让我们一同</p>
+                <p style="font: 20px 'Lantinghei TC'">体会不同城市的飞速</p>
+            </div>
+            <div class="poster_button">
+                <button>开始体验</button>
+            </div>
+        </div>
+        <img src="image_poster.jpg"/>
+    </div>
+    <div class="concept">
+        <div class="up_line">
+            <div class="item">
+                <svg class="icon" aria-hidden="true" style="font-size: 60px;">
+                    <use xlink:href="#icon-college"></use>
+                </svg>
+                <p>去看看城市中美丽的建筑吧。<br>那些优雅的。</p>
+            </div>
+            <div class="item">
+                <svg class="icon" aria-hidden="true" style="font-size: 60px;">
+                    <use xlink:href="#icon-camera"></use>
+                </svg>
+                <p>去拍摄那些你喜欢的。<br>美丽的姑娘。</p>
+            </div>
+            <div class="item">
+                <svg class="icon" aria-hidden="true" style="font-size: 60px;">
+                    <use xlink:href="#icon-prompt"></use>
+                </svg>
+                <p>和陌生的人对话。<br>那是未知的迷人。</p>
+            </div>
+            <div class="item">
+                <svg class="icon" aria-hidden="true" style="font-size: 60px;">
+                    <use xlink:href="#icon-star"></use>
+                </svg>
+                <p style="border: none">钢筋水泥中也有，<br>满天繁星。</p>
+            </div>
+        </div>
+        <div class="down_line">
+            <svg class="icon" aria-hidden="true" style="font-size: 150px;">
+                <use xlink:href="#icon-Chengdu_Metro_icon"></use>
+            </svg>
+            <p>关于轻轨出行，你不知道的还有什么？</p>
+        </div>
+    </div>
+    <div class="category">
+        <div class="select">
+            <div tabindex="0" class="country-menu">
+                <ul class="country-menu-content">
+                    <li>中国</li>
+                    <li>美国</li>
+                    <li>日本</li>
+                </ul>
+            </div>
+            <div tabindex="0" class="province-menu">
+                <ul class="province-menu-content">
+                    <li>四川</li>
+                    <li>上海</li>
+                    <li>广东</li>
+                </ul>
+            </div>
+            <div tabindex="0" class="city-menu">
+                <ul class="city-menu-content">
+                    <li>成都</li>
+                    <li>江苏</li>
+                    <li>上海</li>
+                </ul>
+            </div>
+            <div class="search">搜&nbsp&nbsp&nbsp&nbsp索</div>
+        </div>
+        <div class="main">
+            <div class="index">
+                <p style="font: 24px 'Lantinghei TC';margin-bottom: 5px">查找城市轻轨的运行信息</p>
+                <P style="border: 1px solid white;width: 50px;margin-top: 5px"></P>
+                <p style="font: 12px 'Lantinghei TC'">每个城市有不同的轻轨活动信息，请您自主查询需要了解的城市。</p>
+            </div>
+        </div>
+    </div>
+    <div class="recommend">
+        <div class="recommend1">
+            <div class="img_container">
+                <img src="recommend1.jpg">
+            </div>
+            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">北京活动</p>
+            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+        </div>
+        <div class="recommend2">
+            <div class="img_container">
+                <img src="recommend2.jpg">
+            </div>
+            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">上海活动</p>
+            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+        </div>
+        <div class="recommend3">
+            <div class="img_container">
+                <img src="recommend3.jpg">
+            </div>
+            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">成都活动</p>
+            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+        </div>
+        <div class="recommend4">
+            <div class="img_container">
+                <img src="recommend4.jpg">
+            </div>
+            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">广州活动</p>
+            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+        </div>
+    </div>
+    <div class="demonstration"></div>
+    <div class="sign_up"></div>
+    <div class="contact"></div>
+</div>
+<footer>
+
+</footer>
+</body>
+</html>
+
+
