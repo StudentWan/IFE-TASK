@@ -332,23 +332,25 @@
             width: 100%;
             height: 500px;
             background: whitesmoke;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .recommend>div {
+        .recommend > div {
             width: 300px;
             height: 450px;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .recommend>div>div {
+        .recommend > div > div {
             width: 220px;
-            height:300px;
+            height: 300px;
             border: 1px solid grey;
             border-radius: 2px;
             display: flex;
@@ -356,13 +358,268 @@
             align-items: center;
         }
 
-        .recommend>div>div>img{
+        .recommend > div > div > img {
             width: 200px;
-            height:280px;
+            height: 280px;
             border-radius: 2px;
             overflow: hidden;
         }
 
+        .recommend > div > .img_container:hover ~ p {
+            display: none;
+        }
+
+        .recommend > div > .img_container:hover + div {
+            display: inherit;
+        }
+
+        .recommend > div > .hiding {
+            position: absolute;
+            border: none;
+            width: auto;
+            height: auto;
+            flex-direction: column;
+            top: 0;
+            display: none;
+        }
+
+        .recommend > div > .hiding > p {
+            margin: 5px;
+        }
+
+        .demonstration {
+            width: 100%;
+            height: 1000px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            font-family: "Lantinghei TC";
+        }
+
+        .demonstration .arrow1, .arrow2 {
+            position: absolute;
+        }
+
+        .demonstration .item1 {
+            width: 66%;
+            height: 500px;
+            background-image: url("demonstration1.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .demonstration .arrow1 {
+            border-color: rgba(0, 0, 0, 0) whitesmoke rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+            border-style: solid;
+            border-width: 25px 40px;
+            right: 34%;
+            top: 25%;
+            height: 0px;
+            width: 0px;
+        }
+
+        .demonstration .arrow2 {
+            border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) whitesmoke;
+            border-style: solid;
+            border-width: 25px 40px;
+            left: 66%;
+            top: 75%;
+            height: 0px;
+            width: 0px;
+        }
+
+        .demonstration .item2, .item5 {
+            width: 34%;
+            height: 500px;
+        }
+
+        .demonstration .item2 {
+            background: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demonstration .item2 p {
+            margin: 10px;
+        }
+
+        .demonstration .item3, .item4 {
+            width: 33%;
+            height: 500px;
+        }
+
+        .demonstration .item4 {
+            background: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demonstration .item3 {
+            background: #0086b3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .demonstration .item5 {
+            background-image: url("demonstration5.jpg");
+            background-size: cover;
+        }
+
+        .demonstration .item1 p {
+            color: white;
+            margin: 5px;
+        }
+
+        .demonstration .item2 p a {
+            text-decoration: none;
+            width: 9px;
+            height: 9px;
+            border: 1px solid grey;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+
+        .demonstration .item2 p a:hover {
+            background: grey;
+        }
+
+        .sign_up {
+            width: 100%;
+            height: 800px;
+        }
+
+        .sign_up .section_wrapper {
+            width: 80%;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            font-family: "Lantinghei TC";
+        }
+
+        .sign_up .section_wrapper .section1 {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .sign_up .section_wrapper .section2 {
+            width: 30%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sign_up .section_wrapper .section3 {
+            width: 70%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sign_up .section_wrapper .section3 form {
+            height: 80%;
+            width: 90%;
+            margin: auto 0;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .sign_up .section_wrapper .section3 form input {
+            font: 12px 'Lantinghei TC';
+            background-color: lightgrey;
+            border: none;
+            outline: none;
+        }
+
+        .sign_up .section_wrapper .section3 form .text_blanket {
+            width: 45%;
+            height: 15%;
+            margin: auto;
+        }
+
+        .sign_up .section_wrapper .section3 form .text_area_blanket {
+            width: 95%;
+            height: 30%;
+            margin: auto;
+        }
+
+        .sign_up .section_wrapper .section3 form .submit_blanket {
+            width: 95%;
+            height: 15%;
+            margin: auto;
+            background-color: lightgrey;
+            border: none;
+            font: 16px 'Lantinghei TC';
+        }
+
+        .contact {
+            width: 100%;
+            height: 350px;
+            background: #3D3D3D;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .contact p {
+            margin-top: 5px;
+            font-family: "Lantinghei TC";
+        }
+
+        .contact form {
+            width: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact form input {
+            border: none;
+            outline: none;
+            padding: 0;
+            font-family: "Lantinghei TC";
+        }
+
+        .contact .icon_container svg{
+            margin: 5px;
+        }
+
+        footer {
+            width: 100vw;
+            height: 60px;
+            min-width: 1200px;
+            background: #2B2B2B;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        footer p{
+            font:14px "Lantinghei TC";
+            margin: auto 20px;
+        }
     </style>
 </head>
 <body>
@@ -472,39 +729,148 @@
             <div class="img_container">
                 <img src="recommend1.jpg">
             </div>
-            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">北京活动</p>
-            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+            <div class="hiding">
+                <p style="font: 24px 'Lantinghei TC';">
+                    北&nbsp&nbsp&nbsp&nbsp&nbsp京&nbsp&nbsp&nbsp&nbsp&nbsp活&nbsp&nbsp&nbsp&nbsp&nbsp动</p>
+                <p style="font: 12px 'Lantinghei TC';color: grey;">老北京年画探索</p>
+            </div>
+            <p style="font: 16px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">北京活动</p>
+            <p style="font: 12px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
         </div>
         <div class="recommend2">
             <div class="img_container">
                 <img src="recommend2.jpg">
             </div>
-            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">上海活动</p>
-            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+            <div class="hiding">
+                <p style="font: 24px 'Lantinghei TC';">
+                    上&nbsp&nbsp&nbsp&nbsp&nbsp海&nbsp&nbsp&nbsp&nbsp&nbsp活&nbsp&nbsp&nbsp&nbsp&nbsp动</p>
+                <p style="font: 12px 'Lantinghei TC';color: grey;">老上海年画探索</p>
+            </div>
+
+            <p style="font: 16px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">上海活动</p>
+            <p style="font: 12px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
         </div>
         <div class="recommend3">
             <div class="img_container">
                 <img src="recommend3.jpg">
             </div>
-            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">成都活动</p>
-            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+            <div class="hiding">
+                <p style="font: 24px 'Lantinghei TC';">
+                    成&nbsp&nbsp&nbsp&nbsp&nbsp都&nbsp&nbsp&nbsp&nbsp&nbsp活&nbsp&nbsp&nbsp&nbsp&nbsp动</p>
+                <p style="font: 12px 'Lantinghei TC';color: grey;">来成都画脸谱</p>
+            </div>
+
+            <p style="font: 16px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">成都活动</p>
+            <p style="font: 12px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
         </div>
         <div class="recommend4">
             <div class="img_container">
                 <img src="recommend4.jpg">
             </div>
-            <p style="font: 24px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">广州活动</p>
-            <p style="font: 18px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
+            <div class="hiding">
+                <p style="font: 24px 'Lantinghei TC';">
+                    广&nbsp&nbsp&nbsp&nbsp&nbsp州&nbsp&nbsp&nbsp&nbsp&nbsp活&nbsp&nbsp&nbsp&nbsp&nbsp动</p>
+                <p style="font: 12px 'Lantinghei TC';color: grey;">看看南方的画</p>
+            </div>
+
+            <p style="font: 16px 'Lantinghei TC';margin-top: 15px;margin-bottom: 8px">广州活动</p>
+            <p style="font: 12px 'Lantinghei TC';color: grey;margin-top: 7px;margin-bottom: 15px">来城市中看看画吧</p>
         </div>
     </div>
-    <div class="demonstration"></div>
-    <div class="sign_up"></div>
-    <div class="contact"></div>
+    <div class="demonstration">
+        <div class="arrow1"></div>
+        <div class="arrow2"></div>
+        <div class="item1">
+            <p style="font-size: 30px">新轻轨</p>
+            <p style="font-size: 50px">ChengDu</p>
+            <p>@新轻轨 - 成都</p>
+            <p>2017.04.18</p>
+        </div>
+        <div class="item2">
+            <p style="font: 30px 'Lantinghei TC';">新城市/<span style="color: #0086b3">01</span></p>
+            <p style="width: 60%;font: 14px 'Lantinghei TC';line-height: 16px;color: grey">
+                新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨新轻轨</p>
+            <P style="text-align: center;width: 120px;height: 30px;display: flex;flex-direction: column;justify-content: center;border: 2px solid #0086b3;color: #0086b3;font-size: 16px">
+                更多详情</P>
+            <p><a href=""></a><a href=""></a><a href=""></a><a href=""></a></p>
+        </div>
+        <div class="item3">
+            <p style="text-align: center">新时代<br>关于爱生活的我们</p>
+            <p style="width:50px;height: 3px;background: white"></p>
+            <p style="width: 150px;height: 30px;border: 2px solid white;text-align: center;line-height: 30px;white-space: nowrap;color: white;font-size: 16px;">
+                查看更多</p>
+        </div>
+        <div class="item4">
+            <p style="text-align: center">新时代<br>关于爱生活的我们</p>
+            <p style="width:50px;height: 3px;background: grey"></p>
+            <p style="width: 150px;height: 30px;border: 2px solid #0086b3;text-align: center;line-height: 30px;white-space: nowrap;color: #0086b3;font-size: 16px;">
+                查看更多</p>
+        </div>
+        <div class="item5"></div>
+    </div>
+    <div class="sign_up">
+        <div class="section_wrapper">
+            <div class="section1">
+                <p style="margin-bottom: 5px;font-size: 30px">成为我们的用户</p>
+                <p style="width:50px;height: 3px;background: #0086b3;margin-top: 5px"></p>
+                <p style="width: 500px;text-align: center;color: grey">新轻轨生活，需要年轻的、有梦想的、有激情的年轻人来参与，如果你是，不要犹豫，来加入我们。</p>
+            </div>
+            <div class="section2">
+                <p>新轻轨用户协议</p>
+                <p style="color: grey;font-size: 12px;text-align: justify">
+                    加入新轻轨服务的人员必须遵守中华人民共和国的法律，并且本着平等自愿的原则........</p>
+                <p style="color: grey;font-size: 12px;display: flex;align-items: center;justify-content: flex-end"><img
+                        src="unfold.png" width="12px" height="12px">more</p>
+                <p>新轻轨用户权利</p>
+                <p style="color: grey;font-size: 12px;text-align: justify">
+                    新轻轨用户享受新轻轨内部所有资源共享的权利，并且享有所在新轻轨活动的优先参与权......</p>
+                <p style="color: grey;font-size: 12px;display: flex;align-items: center;justify-content: flex-end"><img
+                        src="unfold.png" width="12px" height="12px">more</p>
+                <p>更多条款</p>
+                <p style="color: grey;font-size: 12px;display: flex;align-items: center;justify-content: flex-end"><img
+                        src="unfold.png" width="12px" height="12px">more</p>
+            </div>
+            <div class="section3">
+                <form>
+                    <input class="text_blanket" type="text" placeholder="    姓名：">
+                    <input class="text_blanket" type="text" placeholder="    年龄：">
+                    <input class="text_blanket" type="text" placeholder="    联系方式：">
+                    <input class="text_blanket" type="text" placeholder="    联系地址：">
+                    <input class="text_area_blanket" type="textarea" placeholder="    你有什么梦想：">
+                    <input class="submit_blanket" type="submit" value="提交申请">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="contact">
+        <p style="font-size: 30px;margin-bottom: 10px">联系我们</p>
+        <p style="width: 600px;text-align: center;font-size: 12px">
+            为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯，也可以通过以下任何方式关注我们的动态</p>
+        <form>
+            <input style="width: 550px;height: 50px;font-size: 16px" name="email" type="text"
+                   placeholder="  someone@email.com"><input style="width: 110px;height: 50px;background-color: grey;text-align: center;font-size: 16px;color: white"
+                                                          type="submit" value="搜  索">
+        </form>
+        <div class="icon_container">
+            <svg class="icon" aria-hidden="true" style="font-size: 30px;">
+                <use xlink:href="#icon-wechat1"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true" style="font-size: 30px;">
+                <use xlink:href="#icon-qq"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true" style="font-size: 30px;">
+                <use xlink:href="#icon-twitter1"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true" style="font-size: 27px;">
+                <use xlink:href="#icon-c"></use>
+            </svg>
+        </div>
+    </div>
 </div>
 <footer>
-
+    <p>@2017</p>
+    <p>Back to top</p>
 </footer>
 </body>
 </html>
-
 
