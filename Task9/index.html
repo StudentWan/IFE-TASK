@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            margin-right: 10px;
+            width: auto;
+            min-width: 30px;
+            height: 30px;
+            text-align: center;
+            background: indianred;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<input name="data" id="data" type="text">
+<button id="left_in">左侧入</button>
+<button id="right_in">右侧入</button>
+<button id="left_out">左侧出</button>
+<button id="right_out">右侧出</button>
+
+<ul>
+</ul>
+
+</body>
+<script>
+    let leftIn = document.getElementById('left_in');
+    let rightIn = document.getElementById('right_in');
+    let leftOut = document.getElementById('left_out');
+    let rightOut = document.getElementById('right_out');
+    let ulNode = document.getElementsByTagName('ul')[0];
+    leftIn.onclick = () => {
+        let data = document.getElementById('data');
+        let check = isNumber(data.value);
+        if(check === true){
+            let firstLiNode = ulNode.firstChild;
+            let liNode = document.createElement('li');
+            //重要
+            liNode.setAttribute('onclick', 'delElement(this);');
+            liNode.innerHTML = data.value;
+            ulNode.insertBefore(liNode, firstLiNode);
+        }
+    }
+
+    rightIn.onclick = () => {
+        let data = document.getElementById('data');
+        let check = isNumber(data.value);
+        if(check === true){
+            let liNode = document.createElement('li');
+            liNode.setAttribute('onclick', 'delElement(this);');
+            liNode.innerHTML = data.value;
+            ulNode.appendChild(liNode);
+        }
+    }
+
+    leftOut.onclick = () => {
+        let remove = ulNode.firstChild;
+        delElement(ulNode.firstChild);
+        if(remove.innerHTML !== undefined) {
+            alert(remove.innerHTML);
+        }
+    }
+
+    rightOut.onclick = () => {
+        let remove = ulNode.lastChild;
+        delElement(ulNode.lastChild);
+        if(remove.innerHTML !== undefined) {
+            alert(remove.innerHTML);
+        }
+    }
+
+    function delElement(obj) {
+        obj.parentNode.removeChild(obj);
+    }
+
+    function isNumber(data) {
+        if(data === "") {
+            return false;
+        }
+        return !isNaN(data);
+    }
+</script>
+</html>
