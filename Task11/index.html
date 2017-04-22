@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <label for="student">在校生</label>
+    <input type="radio" name="choose" id="student" value="student" checked="checked" onclick="changeDisplay(this);"/>
+    <label for="worker">非在校生</label>
+    <input type="radio" name="choose" id="worker" value="worker" onclick="changeDisplay(this);"/>
+    <p class="school">
+        学校
+        <select name="city" id="city" style="width:130px;"></select>
+        <select name="university" id="university" style="width:130px;"></select>
+    </p>
+    <p class="company" style="display: none">
+        就业单位
+        <input type="text" id="company" style="width: 230px;">
+    </p>
+</form>
+</body>
+<script>
+    let school = document.getElementsByClassName('school');
+    let company = document.getElementsByClassName('company');
+    function changeDisplay(field) {
+        let choose = document.getElementsByName('choose');
+        if (choose[0].value === field.value) {
+            school[0].style.display = 'block';
+            company[0].style.display = 'none';
+            choose[0].setAttribute('checked', 'checked');
+            choose[1].removeAttribute('checked');
+        } else {
+            school[0].style.display = 'none';
+            company[0].style.display = 'block';
+            choose[1].setAttribute('checked', 'checked');
+            choose[0].removeAttribute('checked');
+        }
+    }
+
+    let arr_city = ['请选择省/市','北京市','上海市'];
+    let arr_uni = [
+        ['请选择省/市'],
+        ['北京大学','清华大学','中国人民大学','北京航空航天大学'],
+        ['复旦大学','上海交通大学','同济大学','上海财经大学']
+    ];
+    let city = document.getElementById('city');
+    let uni = document.getElementById('university');
+    init();
+    function init() {
+        let index = 0;
+        city.length = arr_city.length;
+
+        for(let i = 0; i < arr_city.length; i++) {
+            city.options[i].text = arr_city[i];
+            city.options[i].value = arr_city[i];
+        }
+
+        city.selectedIndex = index;
+
+        initUni(index);
+    }
+
+    function initUni(index) {
+        uni.length = arr_uni[index].length;
+
+        for (let i = 0; i < arr_uni[index].length; i++) {
+            uni.options[i].text = arr_uni[index][i];
+            uni.options[i].value = arr_uni[index][i];
+        }
+    }
+
+    city.onchange = function() {
+        let _this = this.selectedIndex;
+        uni.length = 0;
+        initUni(_this);
+    }
+</script>
+</html>
