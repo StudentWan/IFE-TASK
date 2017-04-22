@@ -11,16 +11,14 @@
             list-style-type: none;
             display: flex;
             flex-direction: row;
+            align-items: flex-end;
             padding: 0;
         }
 
         ul li {
             padding: 10px;
-            margin-right: 10px;
-            width: auto;
-            min-width: 30px;
-            height: 30px;
             text-align: center;
+            margin: 1px;
             background: indianred;
             color: whitesmoke;
         }
@@ -33,17 +31,26 @@
 <button id="left_out">左侧出</button>
 <button id="right_out">右侧出</button>
 
+<p>未排序：</p>
 <ul>
 </ul>
 
+<p>排序：</p>
+<ul>
+
+</ul>
 </body>
 <script>
     let leftIn = document.getElementById('left_in');
     let rightIn = document.getElementById('right_in');
     let leftOut = document.getElementById('left_out');
     let rightOut = document.getElementById('right_out');
-    let ulNode = document.getElementsByTagName('ul')[0];
+    let Node = document.getElementsByTagName('ul');
+    let ulNode = Node[0];
+    let sortUlNode = Node[1];
+    let count = 0;
     leftIn.onclick = () => {
+        if(count <= 60) {
         let data = document.getElementById('data');
         let check = isNumber(data.value);
         if(check === true){
@@ -51,47 +58,90 @@
             let liNode = document.createElement('li');
             //重要
             liNode.setAttribute('onclick', 'delElement(this);');
-            liNode.innerHTML = data.value;
+            liNode.style.height = data.value + 'px';
+            liNode.value = data.value;
             ulNode.insertBefore(liNode, firstLiNode);
+            count ++;
+            sortNode();
+        }
+        } else {
+            alert('元素个数不能大于60个！');
         }
     }
 
     rightIn.onclick = () => {
-        let data = document.getElementById('data');
-        let check = isNumber(data.value);
-        if(check === true){
-            let liNode = document.createElement('li');
-            liNode.setAttribute('onclick', 'delElement(this);');
-            liNode.innerHTML = data.value;
-            ulNode.appendChild(liNode);
+        if( count <= 60) {
+            let data = document.getElementById('data');
+            let check = isNumber(data.value);
+            if (check === true) {
+                let liNode = document.createElement('li');
+                liNode.setAttribute('onclick', 'delElement(this);');
+                liNode.style.height = data.value + 'px';
+                liNode.value = data.value;
+                ulNode.appendChild(liNode);
+                count++;
+                sortNode();
+            }
+        } else {
+            alert('元素个数不能大于60个！');
         }
     }
 
     leftOut.onclick = () => {
         let remove = ulNode.firstChild;
         delElement(ulNode.firstChild);
-        if(remove.innerHTML !== undefined) {
-            alert(remove.innerHTML);
+        if(remove.value !== undefined) {
+            alert(remove.value);
         }
     }
 
     rightOut.onclick = () => {
         let remove = ulNode.lastChild;
         delElement(ulNode.lastChild);
-        if(remove.innerHTML !== undefined) {
-            alert(remove.innerHTML);
+        if(remove.value !== undefined) {
+            alert(remove.value);
         }
     }
 
     function delElement(obj) {
-        obj.parentNode.removeChild(obj);
+        if(count > 0) {
+            obj.parentNode.removeChild(obj);
+            sortNode();
+            count --;
+        }
     }
 
     function isNumber(data) {
         if(data === "") {
             return false;
         }
-        return !isNaN(data);
+        return (!isNaN(data)) && (data >= 10) && (data <= 100);
+    }
+
+    function sortNode() {
+        let dataSet = [];
+        for (let liNode of ulNode.children){
+            dataSet.push(liNode.value);
+        }
+
+        for(let i = 0; i < dataSet.length; i++) {
+            for(let j = 0; j < dataSet.length - 1 - i; j++){
+                if(dataSet[j] > dataSet[j+1]) {
+                    let tmp = dataSet[j+1];
+                    dataSet[j+1] = dataSet[j];
+                    dataSet[j] = tmp;
+                }
+            }
+        }
+        while(sortUlNode.hasChildNodes()) {
+            sortUlNode.removeChild(sortUlNode.firstChild);
+        }
+        for (let data of dataSet) {
+            let liNode = document.createElement('li');
+            liNode.style.height = data + 'px';
+            liNode.value = data;
+            sortUlNode.appendChild(liNode);
+        }
     }
 </script>
 </html>
