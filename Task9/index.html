@@ -21,6 +21,7 @@
             margin: 1px;
             background: indianred;
             color: whitesmoke;
+            transition: height .5s;
         }
     </style>
 </head>
@@ -30,25 +31,41 @@
 <button id="right_in">右侧入</button>
 <button id="left_out">左侧出</button>
 <button id="right_out">右侧出</button>
-
-<p>未排序：</p>
+<button id="random">随机生成10个</button>
+<button id="sort">排序</button>
 <ul>
 </ul>
 
-<p>排序：</p>
-<ul>
-
-</ul>
 </body>
 <script>
     let leftIn = document.getElementById('left_in');
     let rightIn = document.getElementById('right_in');
     let leftOut = document.getElementById('left_out');
     let rightOut = document.getElementById('right_out');
-    let Node = document.getElementsByTagName('ul');
-    let ulNode = Node[0];
-    let sortUlNode = Node[1];
+    let random = document.getElementById('random');
+    let sort = document.getElementById('sort');
+    let ulNode = document.getElementsByTagName('ul')[0];
     let count = 0;
+
+    random.onclick = () => {
+        for (let i = 0; i < 10; i++) {
+            let data = Math.floor(Math.random() * 91 + 10);
+            if (count <= 60) {
+                let check = isNumber(data);
+                if (check === true) {
+                    let firstLiNode = ulNode.firstChild;
+                    let liNode = document.createElement('li');
+                    //重要
+                    liNode.setAttribute('onclick', 'delElement(this);');
+                    liNode.style.height = data + 'px';
+                    liNode.value = data;
+                    ulNode.insertBefore(liNode, firstLiNode);
+                    count++;
+                }
+            }
+        }
+    }
+
     leftIn.onclick = () => {
         if(count <= 60) {
         let data = document.getElementById('data');
@@ -62,7 +79,6 @@
             liNode.value = data.value;
             ulNode.insertBefore(liNode, firstLiNode);
             count ++;
-            sortNode();
         }
         } else {
             alert('元素个数不能大于60个！');
@@ -80,7 +96,6 @@
                 liNode.value = data.value;
                 ulNode.appendChild(liNode);
                 count++;
-                sortNode();
             }
         } else {
             alert('元素个数不能大于60个！');
@@ -106,7 +121,6 @@
     function delElement(obj) {
         if(count > 0) {
             obj.parentNode.removeChild(obj);
-            sortNode();
             count --;
         }
     }
@@ -118,30 +132,19 @@
         return (!isNaN(data)) && (data >= 10) && (data <= 100);
     }
 
-    function sortNode() {
-        let dataSet = [];
-        for (let liNode of ulNode.children){
-            dataSet.push(liNode.value);
-        }
 
-        for(let i = 0; i < dataSet.length; i++) {
-            for(let j = 0; j < dataSet.length - 1 - i; j++){
-                if(dataSet[j] > dataSet[j+1]) {
-                    let tmp = dataSet[j+1];
-                    dataSet[j+1] = dataSet[j];
-                    dataSet[j] = tmp;
-                }
+
+    sort.onclick = function() {
+        for(let i = 0; i < ulNode.children.length; i++) {
+            for(let j = 0; j <ulNode.children.length - 1 - i; j++){
+                setTimeout(() => {
+                    if(ulNode.children[j].value > ulNode.children[j+1].value) {
+                        ulNode.insertBefore(ulNode.children[j+1], ulNode.children[j]);
+                    }
+                }, 50);
             }
         }
-        while(sortUlNode.hasChildNodes()) {
-            sortUlNode.removeChild(sortUlNode.firstChild);
-        }
-        for (let data of dataSet) {
-            let liNode = document.createElement('li');
-            liNode.style.height = data + 'px';
-            liNode.value = data;
-            sortUlNode.appendChild(liNode);
-        }
     }
+
 </script>
 </html>
