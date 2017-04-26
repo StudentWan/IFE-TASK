@@ -60,6 +60,7 @@ select.onclick = () => {
         let patternReplace = '/' + selectData + '/g';
         let patternRecoverSpanFirst = /<span>/g;
         let patternRecoverSpanLast = /<\/span>/g;
+        //值得学习
         liNode.innerHTML = liNode.innerHTML.replace(patternRecoverSpanFirst, '');
         liNode.innerHTML = liNode.innerHTML.replace(patternRecoverSpanLast, '');
         liNode.innerHTML = liNode.innerHTML.replace(eval(patternReplace), '<span>' + selectData + '</span>');
