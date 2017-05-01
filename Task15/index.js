@@ -3,8 +3,35 @@ const traverseDFButton = document.getElementById('traverseDF'),
     root = document.getElementById('root'),
     searchDFButton = document.getElementById('searchDFBtn');
     searchBFButton = document.getElementById('searchBFBtn');
+    removeButton = document.getElementById('removeBtn');
+    addButton = document.getElementById('addBtn');
 
 let timer, searchData, searchNode = [];
+let elements = document.getElementsByTagName('div');
+let addData = document.getElementById('add');
+
+setInterval(() => {
+    for(let element of elements ) {
+        element.onclick = () => {
+            element.setAttribute('class', 'wait');
+            element.style.border = '2px dashed green';
+            //阻止事件冒泡
+            //非IE
+            window.event.cancelBubble = true;
+            //IE
+            window.event.stopPropagation();
+        }
+    }
+}, 100);
+
+
+removeButton.onclick = () => {
+    searchNodeBF(removeNode, root);
+};
+
+addButton.onclick = () => {
+    searchNodeBF(addNode, root);
+};
 
 traverseDFButton.onclick = () => {
     timer = 0;
@@ -46,7 +73,7 @@ searchBFButton.onclick = () => {
             alert('没有找到节点！');
         }
     }, timer + 10);
-}
+};
 
 function traverseDF(shownode, root) {
     (function recurse(node) {
@@ -106,5 +133,26 @@ function showSearch(node) {
         setTimeout(function () {
             node.style.backgroundColor = "#ffffff";
         }, timer += 500);
+    }
+}
+
+function removeNode(node) {
+    if(node.className === 'wait') {
+        node.parentNode.removeChild(node);
+    }
+}
+
+function addNode(node) {
+    if(node.className === 'wait'){
+        if(addData.value !== "") {
+            console.log(addData.value);
+            let childNode = document.createElement('div');
+            childNode.title = addData.value;
+            childNode.innerHTML = addData.value;
+            node.appendChild(childNode);
+            node.removeAttribute('class');
+            node.style.border = '1px solid black';
+            elements = document.getElementsByTagName('div');
+        }
     }
 }
