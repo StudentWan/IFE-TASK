@@ -1,0 +1,22 @@
+body * {
+    box-sizing: border-box;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table tr:first-child {
+    background-color: black;
+    color: white;
+}
+
+table tr td{
+    width: 150px;
+    text-align: center;
+}
+
+table tr th img {
+    cursor: pointer;
+}
