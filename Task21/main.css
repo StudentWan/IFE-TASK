@@ -1,0 +1,126 @@
+body * {
+    box-sizing: border-box;
+}
+
+.section1 table {
+    margin: 10px auto;
+    text-align: left;
+}
+
+.section1 table tr:first-child {
+    color: white;
+    background-color: black;
+}
+
+.section1 table tr:nth-child(n+2):nth-child(-n+4) {
+    color: red;
+}
+
+.section1 table tr:nth-child(n+2):nth-child(odd) {
+    background-color: #9a9a9a;
+}
+
+.section2 #input1 {
+    display: block;
+    margin: 10px auto;
+    width: 100px;
+    transition: width 1s linear;
+    -moz-transition: width 1s linear; /* Firefox 4 */
+    -webkit-transition: width 1s linear; /* Safari and Chrome */
+    -o-transition: width 1s linear; /* Opera */
+}
+
+.section2 #input1:focus {
+    width: 200px;
+}
+
+.section3 .container {
+    width: 300px;
+    height: 200px;
+    margin: 10px auto;
+    background-color: #9a9a9a;
+    position: relative;
+    overflow: hidden;
+}
+
+.section3 .container .img-container {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    transition: all ease 1s;
+}
+
+.section3 #img1 {
+    width: 300px;
+    height: 200px;
+    background-color: #55a532;
+}
+
+.section3 #img2 {
+    width: 300px;
+    height: 200px;
+    background-color: #0086b3;
+    left: 300px;
+}
+
+.section3 #img3 {
+    width: 300px;
+    height: 200px;
+    background-color: #ed6e52;
+    left: -300px;
+}
+
+.section3 .container .href-container {
+    position: absolute;
+    top: 165px;
+    left: 195px;
+}
+
+.section3 .container .a1 {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.section3 .container .a2 {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.section3 .container .a3 {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.section3 .container a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+.container #img-1:target ~ .img-container {
+    left: 0;
+}
+
+.container #img-2:target ~ .img-container {
+    left: -300px;
+}
+
+.container #img-3:target ~ .img-container {
+    left: -600px;
+}
+
+
+
+
+
